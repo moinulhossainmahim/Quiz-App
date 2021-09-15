@@ -13,7 +13,8 @@ function App() {
     index,
     correct,
     nextQuestion,
-    checkAnswer
+    checkAnswer,
+    closeModal
   } = useGlobalContext()
   if (isWaiting) {
     return <SetupForm />
@@ -22,12 +23,13 @@ function App() {
   if (isLoading) {
     return <Loading/>
   }
-
+  console.log(questions);
   const {question, correct_answer, incorrect_answers} = questions[index]
   const answers = [ ...incorrect_answers, correct_answer]
 
   return (
     <main>
+      <Modal />
       <section className='quiz'>
         <p className="correct-answers">
           correct answers : {correct} / {index}
